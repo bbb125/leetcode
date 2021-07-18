@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 enable_testing()
 add_compile_options(-Wall -Wextra -pedantic -Werror)
 
+# libraries
 find_package(GTest REQUIRED)
-add_subdirectory(three-equal-parts)
-add_executable(leetcode main.cpp)
+
+add_subdirectory(july-2021-challenge)
+add_subdirectory(google)
