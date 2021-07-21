@@ -3,7 +3,9 @@ project(leetcode)
 
 set(CMAKE_CXX_STANDARD 20)
 enable_testing()
-add_compile_options(-Wall -Wextra -pedantic -Werror)
+add_compile_options(-Wall -Wextra -pedantic -Werror -fno-omit-frame-pointer)
+
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address,undefined")
 
 # libraries
 find_package(GTest REQUIRED)
