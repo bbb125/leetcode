@@ -1,2 +1,4 @@
-add_subdirectory(longest_substrict_without_repetition)
+add_subdirectory(3sum)
 add_subdirectory(container-with-most-water)
+add_subdirectory(longest-substring-without-repetition)
+
