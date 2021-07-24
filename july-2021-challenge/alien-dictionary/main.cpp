@@ -92,8 +92,8 @@ public:
                 ;
             if (j < length && word1[j] != word2[j])
                 connections[word1[j]].insert(word2[j]);
-            else if (word1.length() > word2.length() && j == length )
-                return {}; // bad data, stupid bug in tests
+            else if (word1.length() > word2.length() && j == length)
+                return {};  // bad data, stupid bug in tests
         }
         nodes.insert(std::begin(words.back()), std::end(words.back()));
 
@@ -161,6 +161,6 @@ TEST(SolutionTests, All)
     EXPECT_EQ(Solution{}.alienOrder({"z", "x"}), "zx");
     EXPECT_EQ(Solution{}.alienOrder({"z", "x", "z"}), "");
     EXPECT_EQ(Solution{}.alienOrder({"z", "z"}), "z");
-    EXPECT_EQ(Solution{}.alienOrder({"abc", "ab"}), ""); // bug in tests?
+    EXPECT_EQ(Solution{}.alienOrder({"abc", "ab"}), "");  // bug in tests?
 }
 }  // unnamed namespace

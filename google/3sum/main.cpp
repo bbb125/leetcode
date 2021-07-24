@@ -39,7 +39,7 @@
  *
  * Will try this in another solution class.
  */
-class SolutionOld
+class [[maybe_unused]] SolutionOld
 {
 public:
     std::vector<std::vector<int>> threeSum(std::vector<int> const& _nums)
