@@ -60,7 +60,7 @@ public:
     std::vector<int> shuffle()
     {
         auto result     = nums_;
-        const auto size = static_cast<int>(nums_.size());
+        const auto size = std::ssize(nums_);
         for (int i = 0; i < size; ++i)
         {
             auto randomNumber = distribution_(generator_);

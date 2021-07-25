@@ -47,7 +47,7 @@ public:
         auto nums = _nums;
         std::sort(std::begin(nums), std::end(nums));
         std::unordered_multimap<int, int> numsIndex{nums.size()};
-        const int size = static_cast<int>(nums.size());
+        const int size = std::ssize(nums);
         for (int i = 0; i < size; ++i)
             numsIndex.insert({nums[i], i});
 
@@ -93,7 +93,7 @@ public:
     {
         auto nums = _nums;
         std::sort(std::begin(nums), std::end(nums));
-        const int size = static_cast<int>(nums.size());
+        const int size = std::ssize(nums);
 
         std::vector<std::vector<int>> result;
         result.reserve(size * size);
@@ -144,7 +144,7 @@ TEST(SolutionTests, All)
     //    [-2,0,0,2,2]
     //    Expected
     //    [[-2,0,2]]
-    EXPECT_EQ(Solution{}.threeSum({-2,0,0,2,2}).size(), 1);
+    EXPECT_EQ(Solution{}.threeSum({-2, 0, 0, 2, 2}).size(), 1);
     // Input:
     //    [-1,0,1,2,-1,-4]
     // Expected:

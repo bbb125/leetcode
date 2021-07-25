@@ -37,7 +37,7 @@ class Solution
 public:
     int lengthOfLongestSubstring(std::string s)
     {
-        const int stringLength         = static_cast<int>(s.length());
+        const int stringLength         = std::ssize(s);
         std::array<int, 256> positions = {};
         positions.fill(-1);
 

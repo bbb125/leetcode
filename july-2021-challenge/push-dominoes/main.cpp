@@ -50,7 +50,7 @@ public:
     std::string pushDominoes(std::string dominoes)
     {
         dominoes    = 'L' + dominoes + 'R';
-        const int n = static_cast<int>(dominoes.length());
+        const int n = std::ssize(dominoes);
         std::vector<int> forcePlaces;
         forcePlaces.reserve(n);
         for (int i = 0; i < n; ++i)

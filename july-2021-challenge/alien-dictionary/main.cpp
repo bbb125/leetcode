@@ -80,12 +80,12 @@ public:
     {
         Nodes nodes;
         Connections connections(24);
-        const int size = static_cast<int>(words.size());
+        const int size = std::ssize(words);
         for (int i = 0; i < size - 1; ++i)
         {
             auto const& word1 = words[i];
             auto const& word2 = words[i + 1];
-            const int length = static_cast<int>(std::min(word1.length(), word2.length()));
+            const int length  = std::min(std::ssize(word1), std::ssize(word2));
             nodes.insert(std::begin(word1), std::end(word1));
             int j = 0;
             for (; j < length && word1[j] == word2[j]; ++j)

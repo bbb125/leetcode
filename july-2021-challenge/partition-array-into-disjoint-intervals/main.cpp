@@ -36,7 +36,7 @@ class Solution
 public:
     int partitionDisjoint(std::vector<int> const& nums)
     {
-        const int numsSize = static_cast<int>(nums.size());
+        const int numsSize = std::ssize(size);
         std::vector<int> minNums(numsSize + 1, std::numeric_limits<int>::max());
         for (int i = numsSize - 1; i >= 0; --i)
             minNums[i] = std::min(nums[i], minNums[i + 1]);

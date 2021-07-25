@@ -49,13 +49,13 @@ public:
         // every segment must have equal number of ones, so let's remember their
         // positions
         std::vector<int> ones;
-        ones.reserve(arr.size());
-        for (std::size_t i = 0; i < arr.size(); ++i)
+        ones.reserve(std::size(arr));
+        for (std::size_t i = 0; i < std::size(arr); ++i)
             if (arr[i] == 1)
                 ones.push_back(i);
 
-        const int onesSize = static_cast<int>(ones.size());
-        const int arrSize = static_cast<int>(arr.size());
+        const int onesSize = std::ssize(ones);
+        const int arrSize  = std::ssize(arr);
         if (onesSize == 0)
             return {0, arrSize - 1};
 
