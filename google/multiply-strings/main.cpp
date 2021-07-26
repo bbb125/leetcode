@@ -98,17 +98,25 @@ public:
         for (std::size_t i = 0; i < num2.size(); ++i)
             resultNum = add(std::move(resultNum),  //
                             shift10(mulDigit(num1, num2[i]), i));
+
         std::string result;
         result.reserve(resultNum.size());
-        // truncate and stringufy
-        auto start = std::find_if_not(std::rbegin(resultNum), std::rend(resultNum), [](auto digit) { return digit == 0;});
-        std::transform(start,
-                       std::rend(resultNum),
-                       std::back_inserter(result),
-                       [](Digit d)
-                       {
-                           return d + '0';
-                       });
+        // truncate and stringify
+        auto start = std::find_if_not(  //
+            std::rbegin(resultNum),
+            std::rend(resultNum),
+            [](auto digit)
+            {
+                return digit == 0;
+            });
+        std::transform(  //
+            start,
+            std::rend(resultNum),
+            std::back_inserter(result),
+            [](Digit d)
+            {
+                return d + '0';
+            });
 
         return result.empty() ? "0" : result;
     }
