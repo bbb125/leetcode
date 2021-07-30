@@ -55,17 +55,17 @@ public:
         {
           if (!node)
               return {};
+
           auto result = solve(node);
-          result.asc_ += (value == node->val + 1);
-          result.desc_ += (value == node->val - 1);
+          result.asc_ = int{value == node->val + 1} * result.asc_ + 1;
+          result.desc_ = int{value == node->val - 1} * result.desc_ + 1;
           return result;
         };
         auto rightResult = process(root->right, root->val);
         auto leftResult  = process(root->left, root->val);
         Result result{std::max(rightResult.asc_, leftResult.asc_),
-                      std::max(leftResult.desc_, leftResult.desc_)};
-        solution_ = std::max(solution_,
-                             result.asc_ == 1 ? result.desc_ : result.asc_);
+                      std::max(rightResult.desc_, leftResult.desc_)};
+        solution_ = std::max(solution_, result.desc_ + result.asc_ - 1);
         return result;
     }
 
