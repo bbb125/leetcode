@@ -28,7 +28,7 @@
  */
 
 /**
- * This is a simplified approach, using hash-table to pickup right element.
+ * This is a simplified approach, using myHash-table to pickup right element.
  * We need to order things to easily avoid repetitions. Though it's O(n*log(n)).
  * Maybe using unordered_set to guarantee uniqueness will work better (O(n)).
  * Anyway we don't care because entire algorithm complexity is O(n*n).
