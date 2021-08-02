@@ -11,4 +11,5 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address,undefined
 find_package(GTest REQUIRED)
 
 add_subdirectory(july-2021-challenge)
+add_subdirectory(august-2021-challenge)
 add_subdirectory(google)

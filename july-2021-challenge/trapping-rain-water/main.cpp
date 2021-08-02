@@ -26,7 +26,8 @@
  *      0 <= height[i] <= 105
  */
 
-class Solution {
+class Solution
+{
 public:
     int trap(std::vector<int> const& heights)
     {
@@ -34,7 +35,7 @@ public:
         std::vector<Bar> bars;
 
         const int size = static_cast<int>(std::size(heights));
-        int sum = 0;
+        int sum        = 0;
         for (int i = 0; i < size; ++i)
         {
             if (bars.empty())
@@ -50,7 +51,6 @@ public:
                 sum += (lastProcessedPosition - currentPosition) * (activeHeight - height);
                 bars.pop_back();
                 lastProcessedPosition = currentPosition;
-
             }
             bars.emplace_back(heights[i], lastProcessedPosition);
         }
@@ -58,6 +58,11 @@ public:
     }
 };
 
+/**
+ * note: dynamic programming is really nice
+ * for every position compute  max to the left and max to the right
+ * then for every positions sum += min(max-to-the-left, max-to-the-right) - height
+ */
 
 namespace
 {
