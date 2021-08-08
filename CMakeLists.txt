@@ -13,3 +13,5 @@ find_package(GTest REQUIRED)
 add_subdirectory(july-2021-challenge)
 add_subdirectory(august-2021-challenge)
 add_subdirectory(google)
+
+add_subdirectory(weekly-contest-253)
