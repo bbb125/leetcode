@@ -49,7 +49,7 @@ public:
             int n1  = it1 != end1 ? *(it1++) - '0' : 0;
             int n2  = it2 != end2 ? *(it2++) - '0' : 0;
             int sum = extra + n1 + n2;
-            extra = sum / 10;
+            extra   = sum / 10;
             result.push_back(sum - extra * 10 + '0');
         }
         if (extra)

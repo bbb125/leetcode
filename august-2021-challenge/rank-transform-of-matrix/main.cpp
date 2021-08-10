@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <stack>
 /**
  * url:
  * https://leetcode.com/explore/challenge/card/august-leetcoding-challenge-2021/614/week-2-august-8th-august-14th/3874/
@@ -91,33 +92,59 @@ public:
         std::vector<int> maxRowRank(rows);
         std::vector<std::vector<int>> result(rows, std::vector(cols, 0));
 
-
-        for (auto it = std::begin(cells); it != std::end(cells); ++it)
+        for (auto it = std::begin(cells); it != std::end(cells);)
         {
-
-            auto rank = std::max(maxRowRank[it->row], maxColRank[it->col]);
-            auto it1  = it;
-            //std::unordered_map<int, >
+            auto it1 = it;
+            std::unordered_map<int, std::vector<decltype(it)>> rowIndex;
+            std::unordered_map<int, std::vector<decltype(it)>> colIndex;
             for (; it1 != std::end(cells) && it1->value == it->value; ++it1)
             {
-                if (it1->row == it->row || it1->col == it->col)
-                    rank = std::max(rank, std::max(maxRowRank[it1->row], maxColRank[it1->col]));
+                rowIndex[it1->row].push_back(it1);
+                colIndex[it1->col].push_back(it1);
+            }
+            std::vector<bool> related(it1 - it);
+            std::stack<decltype(it)> toCheck;
+            toCheck.push(it);
+            while (!toCheck.empty())
+            {
+                related[toCheck.top() - it] = 1;
+                auto [row, col, _]          = *toCheck.top();
+                toCheck.pop();
+                if (rowIndex.count(row))
+                {
+                    for (auto next : rowIndex[row])
+                        toCheck.push(next);
+                    rowIndex.erase(row);
+                }
+                if (colIndex.count(col))
+                {
+                    for (auto next : colIndex[col])
+                        toCheck.push(next);
+                    colIndex.erase(col);
+                }
             }
 
-            ++rank;
-            for (auto it2 = it; it2 != it1; ++it2)
+            auto fromIt = it;
+            auto toIt   = it;
+            auto rank   = 0;
+            for (bool isRelated : related)
             {
-                if (it2->row == it->row || it2->col == it->col)
+                if (isRelated)
                 {
-                    result[it2->row][it2->col] = rank;
-                    maxRowRank[it2->row]       = rank;
-                    maxColRank[it2->col]       = rank;
-                    if (it != it2)
-                    {
-                        ++it;
-                        std::swap(*it, *it2);
-                    }
+                    rank = std::max(rank,
+                                    std::max(maxColRank[fromIt->col],
+                                             maxRowRank[fromIt->row]));
+                    std::swap(*toIt, *fromIt);
+                    ++toIt;
                 }
+                ++fromIt;
+            }
+            ++rank;
+            for (; it != toIt; ++it)
+            {
+                result[it->row][it->col] = rank;
+                maxRowRank[it->row]      = rank;
+                maxColRank[it->col]      = rank;
             }
         }
         return result;
