@@ -73,9 +73,19 @@ public:
             int result = solve(left, right - 1, 0) + (remove + 1) * (remove + 1);  // remove all contiguous elements
 
             /*
-             * for every box `i` between `left` and `right`
-             * - if the color matches right we calculate points we get removing
-             * boxes in between and to the left of I.
+             * In our case recursive solution would look like:
+             * for every box `I` between Left, Right
+             *     if box[I] has the same color as right
+             *        we try to remove boxes in the middle(solution(I + 1, Right - 1))
+             *        and we solve part [Left, I] assuming that +1 elements can
+             *        be removed in one shot (solution(Left, I, remove + 1))
+             * an extra case - remove all contiguous elements ((remove + 1) ^ 2)
+             * and solve for Left, Right - 1.
+             *
+             * This representation is great, because recursion may be represented
+             * via three integers (Left, Right, Elements we can already remove
+             * from the Right side).
+             * That means that we can easily do memoization.
              *
              */
             for (int i = left; i < right; ++i)
