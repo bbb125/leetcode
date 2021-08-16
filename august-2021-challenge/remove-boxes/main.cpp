@@ -43,7 +43,7 @@ class Solution
 {
 public:
     /**
-     * Idea was taken from the published solution for educational  purposes.
+     * Idea was taken from the published solution for educational purposes.
      */
     struct Impl
     {
@@ -70,7 +70,7 @@ public:
             if (cache_[left][right][remove] != 0)
                 return cache_[left][right][remove];
 
-            int result = solve(left, right - 1, 0) + (remove + 1) * (remove + 1);  // remove all contiguous elements
+            int result = solve(left, right - 1, 0) + (remove + 1) * (remove + 1); // remove all contiguous elements
 
             /*
              * In our case recursive solution would look like:
@@ -91,7 +91,7 @@ public:
             for (int i = left; i < right; ++i)
                 if (boxes_[i] == boxes_[right])
                     result = std::max(result,
-                        solve(left, i, remove + 1)  //
+                        solve(left, i, remove + 1) //
                             + solve(i + 1, right - 1, 0));
             return (cache_[left][right][remove] = result);
         }
@@ -116,4 +116,4 @@ TEST(SolutionTests, All)
     EXPECT_EQ(9, Solution{}.removeBoxes({1, 1, 1}));
     EXPECT_EQ(1, Solution{}.removeBoxes({1}));
 }
-}  // unnamed namespace
+} // unnamed namespace

@@ -1,5 +1,5 @@
 Language: Cpp
-BasedOnStyle: Chromium
+BasedOnStyle: Microsoft #Chromium
 AccessModifierOffset: '-4'
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveMacros: 'true'
@@ -73,3 +73,5 @@ SpacesInContainerLiterals: false
 SpacesInParentheses: 'false'
 TabWidth: '4'
 UseTab: Never
+ContinuationIndentWidth: 4
+SpacesBeforeTrailingComments: 2

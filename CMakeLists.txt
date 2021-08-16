@@ -15,3 +15,4 @@ add_subdirectory(august-2021-challenge)
 add_subdirectory(google)
 
 add_subdirectory(weekly-contest-253)
+add_subdirectory(weekly-contest-254)

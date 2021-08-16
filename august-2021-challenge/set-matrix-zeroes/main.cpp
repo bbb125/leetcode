@@ -71,51 +71,54 @@ public:
 };
 namespace
 {
+
 TEST(SolutionTests, All)
 {
     using namespace ::testing;
-    std::vector<std::vector<int>> example1{//
-                                           {1, 1, 1},
-                                           {1, 0, 1},
-                                           {1, 1, 1}};
+    std::vector<std::vector<int>> example1  //
+        {
+            {1, 1, 1},
+            {1, 0, 1},
+            {1, 1, 1}  //
+        };
     Solution{}.setZeroes(example1);
-    EXPECT_THAT(example1,     //
-                ElementsAre(  //
-                    ElementsAre(1, 0, 1),
-                    ElementsAre(0, 0, 0),
-                    ElementsAre(1, 0, 1)));
+    EXPECT_THAT(example1,  //
+        ElementsAre(       //
+            ElementsAre(1, 0, 1),
+            ElementsAre(0, 0, 0),
+            ElementsAre(1, 0, 1)));
 
     std::vector<std::vector<int>> example2{//
-                                           {0, 1, 2, 0},
-                                           {3, 4, 5, 2},
-                                           {1, 3, 1, 5}};
+        {0, 1, 2, 0},
+        {3, 4, 5, 2},
+        {1, 3, 1, 5}};
     Solution{}.setZeroes(example2);
-    EXPECT_THAT(example2,     //
-                ElementsAre(  //
-                    ElementsAre(0, 0, 0, 0),
-                    ElementsAre(0, 4, 5, 0),
-                    ElementsAre(0, 3, 1, 0)));
+    EXPECT_THAT(example2,  //
+        ElementsAre(       //
+            ElementsAre(0, 0, 0, 0),
+            ElementsAre(0, 4, 5, 0),
+            ElementsAre(0, 3, 1, 0)));
 
     std::vector<std::vector<int>> example3{//
-                                           {1},
-                                           {0}};
+        {1},
+        {0}};
     Solution{}.setZeroes(example3);
-    EXPECT_THAT(example3,     //
-                ElementsAre(  //
-                    ElementsAre(0),
-                    ElementsAre(0)));
+    EXPECT_THAT(example3,  //
+        ElementsAre(       //
+            ElementsAre(0),
+            ElementsAre(0)));
 
     std::vector<std::vector<int>> example4{//
-                                           {1, 2, 3, 4},
-                                           {5, 0, 7, 8},
-                                           {0, 10, 11, 12},
-                                           {13, 14, 15, 0}};
+        {1, 2, 3, 4},
+        {5, 0, 7, 8},
+        {0, 10, 11, 12},
+        {13, 14, 15, 0}};
     Solution{}.setZeroes(example4);
-    EXPECT_THAT(example4,     //
-                ElementsAre(  //
-                    ElementsAre(0, 0, 3, 0),
-                    ElementsAre(0, 0, 0, 0),
-                    ElementsAre(0, 0, 0, 0),
-                    ElementsAre(0, 0, 0, 0)));
+    EXPECT_THAT(example4,  //
+        ElementsAre(       //
+            ElementsAre(0, 0, 3, 0),
+            ElementsAre(0, 0, 0, 0),
+            ElementsAre(0, 0, 0, 0),
+            ElementsAre(0, 0, 0, 0)));
 }
 }  // unnamed namespace
