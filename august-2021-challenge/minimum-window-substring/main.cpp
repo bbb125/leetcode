@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <list>
 /**
  * url:
  * https://leetcode.com/explore/challenge/card/august-leetcoding-challenge-2021/615/week-3-august-15th-august-21st/3891/
@@ -46,9 +47,20 @@ class Solution
 public:
     std::string minWindow(std::string s, std::string t)
     {
-        /**
-         * take first elemet -
-         */
+        const int sSize = static_cast<int>(std::size(s));
+        std::array<int, 52> todo;
+        std::unordered_map<char, std::vector<int>> tLetters;
+        std::list<int> positions;
+        for (int i = 0; i < sSize; ++i)
+        {
+            char ch = s[i];
+            tLetters[ch].push_back(i);
+            // find max of tops
+            insert to the top of the list
+            remove tLetters[ch] from list
+            if ch == list first
+
+        }
         return {};
     }
 };
