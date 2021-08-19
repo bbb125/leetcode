@@ -1,4 +1,5 @@
 #include <vector>
+#include <set>
 
 /**
  * Given an m x n matrix and an integer k, return the max sum of a rectangle
@@ -30,13 +31,13 @@ class Solution
 {
 public:
     int result = INT_MIN;
-    void updateResult(vector<int>& nums, int k)
+    void updateResult(std::vector<int>& nums, int k)
     {
         int sum = 0;
 
         // Container to store sorted prefix sums.
-        set<int> sortedSum;
-        set<int>::iterator it;
+        std::set<int> sortedSum;
+        std::set<int>::iterator it;
 
         // Add 0 as the prefix sum for an empty sub-array.
         sortedSum.insert(0);
@@ -60,7 +61,7 @@ public:
     int maxSumSubmatrix(vector<vector<int>>& matrix, int k)
     {
         // Stores the 1D representation of the matrix.
-        vector<int> rowSum(matrix[0].size());
+        std::vector<int> rowSum(matrix[0].size());
         for (int i = 0; i < matrix.size(); i++)
         {
             // Initialize the 1D representation with 0s.
