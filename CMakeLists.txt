@@ -16,3 +16,5 @@ add_subdirectory(google)
 
 add_subdirectory(weekly-contest-253)
 add_subdirectory(weekly-contest-254)
+add_subdirectory(weekly-contest-255)
+add_subdirectory(biweekly-59)
