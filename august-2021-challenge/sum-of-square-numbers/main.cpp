@@ -48,7 +48,23 @@ public:
         }
         return false;
     }
-};namespace
+};
+
+/**
+ * Another approach.
+ * Approach 5: Fermat Theorem
+ *
+ * Algorithm
+ *
+ * This approach is based on the following statement, which is based on Fermat's
+ * Theorem:
+ *
+ * Any positive number n is expressible as a sum of two squares if and only if
+ * the prime factorization of
+ * n , every prime of the form
+ * (4k+3) occurs an even number of times.
+ */
+namespace
 {
 TEST(SolutionTests, All)
 {
