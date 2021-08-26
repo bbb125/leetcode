@@ -8,6 +8,7 @@ add_compile_options(-Wall -Wextra -pedantic -Werror -fno-omit-frame-pointer)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address,undefined")
 
 # libraries
+#set(CMAKE_PREFIX_PATH /Users/vova/devel/installed)
 find_package(GTest REQUIRED)
 
 add_subdirectory(july-2021-challenge)
