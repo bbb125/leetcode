@@ -73,7 +73,6 @@ public:
                     {
                         return value.second <= startsAt;
                     });
-                ;
                 return job.profit_
                      + ((it != std::end(profitEndTimeLookup)) ? it->first : 0);
             }();
