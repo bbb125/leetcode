@@ -45,7 +45,7 @@ public:
          * numbers, then having an extra number K <= M we can represent
          * [1, M + K).
          * Therefore if we don't have M in our sequence we just add and assume
-         * that we can represent [1, M+M).
+         * that we can represent [1, M + M).
          */
         std::int64_t currentValue = 1;
         std::size_t idx           = 0;
