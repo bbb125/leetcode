@@ -47,27 +47,57 @@ class Solution
 public:
     std::string minWindow(std::string s, std::string t)
     {
-        const int sSize = static_cast<int>(std::size(s));
-        std::array<int, 52> todo;
-        std::unordered_map<char, std::vector<int>> tLetters;
-        std::list<int> positions;
-        for (int i = 0; i < sSize; ++i)
+        auto pattern = [&]
         {
-            char ch = s[i];
-            tLetters[ch].push_back(i);
-            // find max of tops
-            insert to the top of the list
-            remove tLetters[ch] from list
-            if ch == list first
+            std::unordered_map<char, int> result;
+            for (auto ch : t)
+                result[ch] += 1;
+            return result;
+        }();
+        std::unordered_map<char, int> occurrences;
 
+        std::size_t left            = 0;
+        std::size_t right           = 0;
+        std::size_t numberOfMatched = 0;
+        std::string_view result;
+        bool foundAny = false;
+        while (right != std::size(s) || numberOfMatched == std::size(pattern))
+        {
+            if (numberOfMatched != std::size(pattern))
+            {
+                auto ch = s[right++];
+                if (!pattern.count(ch))
+                    continue;
+
+                ++occurrences[ch];
+                numberOfMatched += (occurrences[ch] == pattern[ch]);
+            }
+            else
+            {
+                if (!foundAny || std::size(result) > (right - left))
+                {
+                    result = std::string_view{s.data() + left, right - left};
+                    foundAny = true;
+                }
+
+                auto ch = s[left++];
+                if (!pattern.count(ch))
+                    continue;
+
+                --occurrences[ch];
+                numberOfMatched -= (occurrences[ch] < pattern[ch]);
+            }
         }
-        return {};
+        return foundAny ? std::string{result} : std::string{};
     }
 };
 namespace
 {
 TEST(SolutionTests, All)
 {
-    // EXPECT_THAT(Solution{}.twoSum(example2, 6), ::testing::UnorderedElementsAre(1, 2));
+    EXPECT_EQ("cwae", Solution{}.minWindow("cabwefgewcwaefgcf", "cae"));
+    EXPECT_EQ("BANC", Solution{}.minWindow("ADOBECODEBANC", "ABC"));
+    EXPECT_EQ("a", Solution{}.minWindow("a", "a"));
+    EXPECT_EQ("", Solution{}.minWindow("a", "aa"));
 }
 }  // unnamed namespace
